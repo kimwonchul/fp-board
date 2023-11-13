@@ -1,4 +1,5 @@
-package com.fp.fpboard;
+package com.fp.fpboard.service;
+
 
 import com.fp.fpboard.domain.Article;
 import com.fp.fpboard.domain.UserAccount;
@@ -6,9 +7,9 @@ import com.fp.fpboard.domain.constant.SearchType;
 import com.fp.fpboard.dto.ArticleDto;
 import com.fp.fpboard.dto.ArticleWithCommentsDto;
 import com.fp.fpboard.repository.ArticleRepository;
-
-
 import com.fp.fpboard.repository.UserAccountRepository;
+
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
+
+
 
 @Slf4j
 @RequiredArgsConstructor
@@ -77,8 +81,8 @@ public class ArticleService {
         }
     }
 
-    public void deleteArticle(long articleId) {
-        articleRepository.deleteById(articleId);
+    public void deleteArticle(long articleId, String userId) {
+        articleRepository.deleteByIdAndUserAccount_UserId(articleId, userId);
     }
 
     public long getArticleCount() {
