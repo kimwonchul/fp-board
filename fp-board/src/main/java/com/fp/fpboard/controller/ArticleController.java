@@ -1,12 +1,12 @@
 package com.fp.fpboard.controller;
 
-import com.fp.fpboard.ArticleService;
 import com.fp.fpboard.domain.constant.FormStatus;
 import com.fp.fpboard.domain.constant.SearchType;
 import com.fp.fpboard.dto.UserAccountDto;
 import com.fp.fpboard.dto.request.ArticleRequest;
 import com.fp.fpboard.dto.response.ArticleResponse;
 import com.fp.fpboard.dto.response.ArticleWithCommentsResponse;
+import com.fp.fpboard.service.ArticleService;
 import com.fp.fpboard.service.PaginationService;
 
 
@@ -89,7 +89,7 @@ public class ArticleController {
     public String postNewArticle(ArticleRequest articleRequest) {
         // TODO: 인증 정보를 넣어줘야 한다.
         articleService.saveArticle(articleRequest.toDto(UserAccountDto.of(
-                "uno", "asdf1234", "uno@mail.com", "Uno", "memo"
+                "odin", "odin", "odin@odin.com", "odin", "odin"
         )));
 
         return "redirect:/articles";
@@ -109,7 +109,7 @@ public class ArticleController {
     public String updateArticle(@PathVariable Long articleId, ArticleRequest articleRequest) {
         // TODO: 인증 정보를 넣어줘야 한다.
         articleService.updateArticle(articleId, articleRequest.toDto(UserAccountDto.of(
-                "uno", "asdf1234", "uno@mail.com", "Uno", "memo"
+                "odin", "odin", "odin@odin.com", "odin", "odin"
         )));
 
         return "redirect:/articles/" + articleId;
